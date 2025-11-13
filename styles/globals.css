@@ -1,0 +1,108 @@
+/* ...existing code... */
+
+/* Import da fonte e diretivas Tailwind */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset / base */
+:root {
+  --bg: #f7f7f9;
+  --primary: #4299e1;
+}
+
+html, body, #__next {
+  height: 100%;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background-color: var(--bg);
+  color: #111827;
+  margin: 0;
+}
+
+/* Tailwind base overrides (optional) */
+.container {
+  max-width: 100%;
+}
+
+/* Rating radio custom styles (copiado do HTML original) */
+.rating-radio input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid #a0aec0;
+  margin: 0 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.12s ease-in-out;
+  font-weight: 600;
+  background: transparent;
+  color: #1f2937;
+}
+
+.rating-radio input[type="radio"]:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(66,153,225,0.16);
+}
+
+.rating-radio input[type="radio"]:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  box-shadow: 0 0 0 3px rgba(66,153,225,0.18);
+}
+
+.rating-radio label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* Páginas SPA - exibir/ocultar */
+.page { display: none; }
+.page.active { display: block; }
+
+/* Toast custom (comportamento já controlado por classes Tailwind no JS) */
+#toast-notification {
+  will-change: opacity, transform;
+  transform-origin: right bottom;
+}
+
+/* Chart canvas responsive fallback */
+canvas#performance-chart {
+  width: 100% !important;
+  max-height: 520px;
+  height: 360px !important;
+  display: block;
+}
+
+/* Pequenas melhorias de acessibilidade/visual */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66,153,225,0.12);
+}
+
+/* Ajustes para listas e cards */
+.bg-red-50 { background-color: #fff5f5; }
+.bg-green-50 { background-color: #f0fff4; }
+
+/* ...existing code... */
