@@ -5,7 +5,7 @@ const RegisterTeacherPage = () => {
     const [teacherName, setTeacherName] = useState('');
     const [statusMessage, setStatusMessage] = useState('');
 
-    const handleRegister = (e) => {
+    const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!teacherName) {
             setStatusMessage('Nome do professor é obrigatório.');

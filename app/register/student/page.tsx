@@ -5,7 +5,7 @@ const RegisterStudentPage = () => {
     const [studentName, setStudentName] = useState('');
     const [statusMessage, setStatusMessage] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!studentName) {
             setStatusMessage('Nome inválido.');
