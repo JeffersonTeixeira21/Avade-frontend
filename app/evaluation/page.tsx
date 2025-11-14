@@ -5,6 +5,17 @@ import Toast from '@/components/Toast';
 import type { Teacher } from '@/lib/inMemoryStore';
 import { getTeachers, addEvaluation } from '@/lib/inMemoryStore';
 
+const questions = [
+    "O professor demonstra domínio do conteúdo ministrado.",
+    "O professor explica os assuntos de forma clara e compreensível.",
+    "O professor utiliza exemplos e métodos que facilitam o aprendizado.",
+    "O professor responde às dúvidas com atenção e clareza.",
+    "O professor demonstra organização e planejamento das aulas.",
+    "O professor utiliza adequadamente os recursos didáticos.",
+    "O professor mantém um bom relacionamento e respeito com os alunos.",
+    "O professor estimula a participação e o pensamento crítico durante as aulas."
+];
+
 const EvaluationPage = () => {
     const [teachersList, setTeachersList] = useState<Teacher[]>([]);
     const [selectedTeacher, setSelectedTeacher] = useState('');
@@ -22,10 +33,7 @@ const EvaluationPage = () => {
     };
 
     const handleObjectiveScoreChange = (question: string, score: number) => {
-        setObjectiveScores(prevScores => ({ 
-            ...prevScores, 
-            [question]: score 
-        }));
+        setObjectiveScores(prev => ({ ...prev, [question]: score }));
     };
 
     const handleDescriptiveChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -36,8 +44,7 @@ const EvaluationPage = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Verificar se as 8 perguntas foram respondidas
-        const allAnswered = Array.from({ length: 8 }, (_, i) => `q${i+1}`)
+        const allAnswered = Array.from({ length: 8 }, (_, i) => `q${i + 1}`)
             .every(key => objectiveScores[key] !== undefined);
 
         if (!selectedTeacher || !allAnswered || !descriptiveAnswers.q9 || !descriptiveAnswers.q10) {
@@ -60,7 +67,6 @@ const EvaluationPage = () => {
         setToastMessage('Avaliação enviada com sucesso!');
         setToastVisible(true);
 
-        // Reset sem apagar o professor
         setObjectiveScores({});
         setDescriptiveAnswers({ q9: '', q10: '' });
     };
@@ -81,29 +87,28 @@ const EvaluationPage = () => {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 shadow-sm text-base"
                 >
                     <option value="" disabled>-- Escolha um Professor --</option>
-                    {teachersList.map(teacher => (
-                        <option key={teacher.id} value={teacher.id}>{teacher.name}</option>
+                    {teachersList.map(t => (
+                        <option key={t.id} value={t.id}>{t.name}</option>
                     ))}
                 </select>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-8">
-                
                 <h3 className="text-xl font-semibold text-gray-700 border-b pb-2">
                     Avaliação Objetiva (1 = Ruim | 5 = Excelente)
                 </h3>
 
-                {[...Array(8)].map((_, index) => {
-                    const questionNumber = index + 1;
+                {questions.map((text, index) => {
+                    const qn = index + 1;
                     return (
-                        <div key={questionNumber} className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                        <div key={qn} className="p-4 bg-gray-50 rounded-lg border border-gray-200">
                             <p className="font-semibold text-gray-800 mb-3">
-                                {questionNumber}. Pergunta {questionNumber}
+                                {qn}. {text}
                             </p>
 
-                            <RatingRadio
-                                question={`q${questionNumber}`}
-                                onChange={handleObjectiveScoreChange}
+                            <RatingRadio 
+                                question={`q${qn}`} 
+                                onChange={handleObjectiveScoreChange} 
                             />
                         </div>
                     );
@@ -117,8 +122,8 @@ const EvaluationPage = () => {
                     </label>
                     <textarea
                         name="q9"
-                        rows={3}
                         value={descriptiveAnswers.q9}
+                        rows={3}
                         onChange={handleDescriptiveChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                         required
@@ -131,8 +136,8 @@ const EvaluationPage = () => {
                     </label>
                     <textarea
                         name="q10"
-                        rows={3}
                         value={descriptiveAnswers.q10}
+                        rows={3}
                         onChange={handleDescriptiveChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                         required
