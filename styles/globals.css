@@ -105,4 +105,9 @@ select:focus {
 .bg-red-50 { background-color: #fff5f5; }
 .bg-green-50 { background-color: #f0fff4; }
 
-/* ...existing code... */
+.high-contrast {
+  filter: invert(1) hue-rotate(180deg);
+}
+.high-contrast img {
+  filter: invert(1) hue-rotate(180deg);
+}

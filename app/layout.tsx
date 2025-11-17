@@ -1,21 +1,26 @@
-import React from 'react';
-import '../styles/globals.css';
-import Navbar from '../components/Navbar';
+import "../styles/globals.css";
+import Navbar from "../components/Navbar";
+import SkipToContent from "@/components/SkipToContent";
+import FontControls from "@/components/FontControls";
+import ContrastToggle from "@/components/ContrastToggle";
+// VLibras entra depois
 
-export const metadata = {
-    title: 'Sistema de Avaliação Educacional',
-    description: 'Sistema para avaliação de professores pelos alunos.',
-};
+export default function RootLayout({ children }) {
+  return (
+    <html lang="pt-BR">
+      <body className="min-h-screen bg-gray-100">
+        
+        <SkipToContent />
+        <Navbar />
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
-    return (
-        <html lang="pt-BR">
-            <body className="min-h-screen flex flex-col bg-gray-100">
-                <Navbar />
-                <main className="flex-grow">{children}</main>
-            </body>
-        </html>
-    );
-};
+        <main id="main-content" className="flex-grow">
+          {children}
+        </main>
 
-export default RootLayout;
+        <FontControls />
+        <ContrastToggle />
+
+      </body>
+    </html>
+  );
+}
