@@ -3,13 +3,15 @@ import Navbar from "../components/Navbar";
 import SkipToContent from "@/components/SkipToContent";
 import FontControls from "@/components/FontControls";
 import ContrastToggle from "@/components/ContrastToggle";
+import ReadingRuler from "@/components/ReadingRuler";
+import AccessibilityMenu from "@/components/AccessibilityMenu";
+
 // VLibras entra depois
 
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
       <body className="min-h-screen bg-gray-100">
-        
         <SkipToContent />
         <Navbar />
 
@@ -17,9 +19,11 @@ export default function RootLayout({ children }) {
           {children}
         </main>
 
-        <FontControls />
-        <ContrastToggle />
-
+        <AccessibilityMenu>
+          <FontControls />
+          <ContrastToggle />
+          <ReadingRuler />
+        </AccessibilityMenu>
       </body>
     </html>
   );
