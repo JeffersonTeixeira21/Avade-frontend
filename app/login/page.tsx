@@ -30,10 +30,6 @@ export default function LoginPage() {
         <h2 className="text-3xl font-extrabold text-gray-900 mb-6 text-center">Bem-vindo(a) ao EduAvalia</h2>
         <p className="text-center text-gray-600 mb-8">Selecione seu perfil para acessar o sistema.</p>
 
-        <div className="text-center text-sm mb-4">
-          <p className="text-green-600 font-medium">Sistema em modo "Em Memória". Dados não serão persistidos.</p>
-        </div>
-
         <div className="space-y-4">
           <button
             onClick={() => handleLogin('admin')}
