@@ -6,9 +6,9 @@ import React from 'react';
 export default function VLibrasWidget() {
   return (
     <>
-      <div vw="" className="enabled">
-        <div vw-access-button="" className="active"></div>
-        <div vw-plugin-wrapper="">
+      <div data-vw="true" className="enabled">
+        <div data-vw-access-button="true" className="active"></div>
+        <div data-vw-plugin-wrapper="true">
           <div className="vw-plugin-top-wrapper"></div>
         </div>
       </div>
