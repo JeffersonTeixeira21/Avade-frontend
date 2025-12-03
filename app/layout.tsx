@@ -7,9 +7,11 @@ import ReadingRuler from "@/components/ReadingRuler";
 import AccessibilityMenu from "@/components/AccessibilityMenu";
 import VLibrasWidget from "@/components/VLibrasWidget";
 
-// VLibras entra depois
-
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="pt-BR">
       <body className="min-h-screen bg-gray-100">
