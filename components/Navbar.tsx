@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
                     <div className="flex items-center">
                         <span className="text-2xl font-bold tracking-wider cursor-pointer"
                               onClick={() => router.push('/')}>
-                            EduAvalia
+                            AVADE
                         </span>
                     </div>
 
