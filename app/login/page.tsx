@@ -38,13 +38,13 @@ export default function LoginPage() {
           >
             Acessar como Administrador (Cadastro/Gráficos)
           </button>
-          <button
+          {/* <button
             onClick={() => handleLogin('student')}
             id="login-student-btn"
             className="w-full py-3 px-4 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-150 ease-in-out shadow-md"
           >
             Acessar como Aluno (Avaliações)
-          </button>
+          </button> */}
         </div>
       </div>
     </main>

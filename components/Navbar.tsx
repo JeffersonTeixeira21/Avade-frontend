@@ -35,13 +35,13 @@ const Navbar: React.FC = () => {
                         >
                             Gráficos
                         </button>
-
+{/* 
                         <button
                             onClick={() => handleNavigation('/register/student')}
                             className="text-sm font-medium hover:bg-blue-700 px-3 py-2 rounded-md transition"
                         >
                             Cad. Alunos
-                        </button>
+                        </button> */}
 
                         <button
                             onClick={() => handleNavigation('/register/teacher')}
